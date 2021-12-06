@@ -1,0 +1,260 @@
+main {
+  text-align: center;
+}
+.recipe-btn {
+  margin-top: 5px;
+  text-align: center;
+}
+.recipes-pageination {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.rating-div {
+  display: block;
+  text-align: center;
+}
+
+.recipe-image {
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Medium Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  main {
+    text-align: left;
+  }
+  div.recipes-page-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  div.recipe-page-section-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  div.recipe-page-section-wrapper-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  /* Recipes list and pageination */
+  div.recipes-btns-wrapper {
+    width: 25.5%;
+  }
+
+  div.recipes-pageination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+  }
+
+  .pageination-btn {
+  }
+
+  /* Recipe data */
+  div.recipe-data-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 72%;
+  }
+
+  div.recipe-sub-data-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+    width: 100%;
+  }
+
+  div.recipe-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-height: 30em;
+  }
+
+  div.recipe-image img {
+    max-height: inherit;
+  }
+
+  div.recipe-description {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 20px;
+  }
+
+  div.recipe-items-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 20px;
+  }
+
+  div.recipe-ingredient {
+    margin-bottom: 2px;
+  }
+
+  h6.base-recipe-info {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* Recipe controls */
+  div.recipe-controls {
+    display: flex;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  div.recipe-controls .ctrl-btn {
+    font-size: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .rating-div {
+    display: flex;
+  }
+}
+
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Large Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+
+@media only screen and (min-width: 992px) {
+  div.recipes-page-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  div.recipe-page-section-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  div.recipe-page-section-wrapper-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  /* Recipes list and pageination */
+  div.recipes-btns-wrapper {
+    width: 25.5%;
+  }
+
+  div.recipes-pageination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+  }
+
+  .pageination-btn {
+  }
+
+  /* Recipe data */
+  div.recipe-data-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 72%;
+  }
+
+  div.recipe-sub-data-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+
+  div.recipe-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-height: 30em;
+  }
+
+  div.recipe-image img {
+    max-height: inherit;
+  }
+
+  div.recipe-description {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 20px;
+  }
+
+  div.recipe-items-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 20px;
+  }
+
+  div.recipe-ingredient {
+    margin-bottom: 2px;
+  }
+
+  h6.base-recipe-info {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* Recipe controls */
+  div.recipe-controls {
+    display: flex;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  div.recipe-controls .ctrl-btn {
+    font-size: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .rating-div {
+    display: flex;
+  }
+}

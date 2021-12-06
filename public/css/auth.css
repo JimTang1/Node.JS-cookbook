@@ -1,0 +1,55 @@
+/* Colors */
+:root {
+  --white: #f0f9ff;
+  --dark: #282d32;
+  --yellow: #f0a202;
+  /*#dac363*/
+  --blue: #466a8d;
+  --silver: #c6c7c4;
+}
+
+.login-form {
+  width: 20rem;
+  max-width: 90%;
+  margin: auto;
+  display: block;
+}
+
+.btn-signup {
+  width: 190px;
+}
+
+.mt-2 {
+  text-align: center;
+}
+
+.btn {
+  margin-bottom: 10px;
+}
+
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Medium Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+@media only screen and (min-width: 768px) and (max-width: 991px) {}
+
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Large Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+
+@media only screen and (min-width: 992px) {}

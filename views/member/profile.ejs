@@ -1,0 +1,45 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+        <% if (errorMessage) { %>
+            <div class="user-message user-message--error"><%= errorMessage %></div>
+            <% } %>
+            <div class='contact-form'>
+                <form class="login-form" action="/member/profile" method="POST">
+                    <div>Only enter values you would like to change.</div>
+                    <div class="txtb">
+                        <label for="email">E-Mail</label>
+                        <input class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>" type="email"
+                            name="email" id="email" placeholder="<%= user.Email %>">
+                    </div>
+                    <div class="txtb">
+                        <label for="password">Password</label>
+                        <input class="<%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
+                            type="password" name="password" id="password">
+                    </div>
+                    <div class="txtb">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input class="<%= validationErrors.find(e => e.param === 'confirmPassword') ? 'invalid' : '' %>"
+                            type="password" name="confirmPassword" id="confirmPassword">
+                    </div>
+                    <div class="txtb">
+                        <label for="firstname">First Name</label>
+                        <input class="<%= validationErrors.find(e => e.param === 'firstname') ? 'invalid' : '' %>"
+                            type="text" name="firstname" id="firstname" placeholder="<%= user.FirstName %>">
+                    </div>
+                    <div class="txtb">
+                        <label for="lastname">Last Name</label>
+                        <input class="<%= validationErrors.find(e => e.param === 'lastname') ? 'invalid' : '' %>"
+                            type="text" name="lastname" id="lastname" placeholder="<%= user.LastName %>">
+                    </div>
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button class="btn" type="submit">Update</button>
+                </form>
+            </div>
+    </main>
+    <%- include('../includes/end.ejs') %>

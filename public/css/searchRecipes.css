@@ -1,0 +1,142 @@
+/* div {
+  margin: auto;
+} */
+.card {
+  width: auto;
+}
+
+.btn:hover {
+  color: blue;
+}
+
+.card {
+  margin: 5px;
+  width: auto;
+}
+
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Medium Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .card-container {
+    margin: auto;
+  }
+
+  .card-deck {
+    margin-top: 15px;
+  }
+
+  .btn {
+    color: black;
+    position: absolute;
+    margin-left: -50px;
+    left: 50%;
+    bottom: 5px;
+  }
+
+  .card-img-top {
+    width: 320px;
+    height: 230px;
+  }
+
+  .card-text {
+    height: 100px;
+    overflow: hidden;
+  }
+
+  .card-title {
+    text-align: center;
+  }
+
+  .hoverCard:hover {
+    box-shadow: 10px 10px 5px grey;
+  }
+
+  .card-deck {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: 125px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 0.8fr));
+    grid-gap: 0.5rem;
+  }
+
+  .card-deck .img {
+    max-width: 0.8fr;
+  }
+  .card {
+    width: 18rem;
+  }
+}
+
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Large Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+
+@media only screen and (min-width: 992px) {
+  .card-container {
+    margin: auto;
+  }
+
+  .card-deck {
+    margin-top: 15px;
+  }
+
+  .btn {
+    color: black;
+    position: absolute;
+    margin-left: -50px;
+    left: 50%;
+    bottom: 5px;
+  }
+
+  .card-img-top {
+    width: 320px;
+    height: 230px;
+  }
+
+  .card-text {
+    height: 100px;
+    overflow: hidden;
+  }
+
+  .card-title {
+    text-align: center;
+  }
+
+  .hoverCard:hover {
+    box-shadow: 10px 10px 5px grey;
+  }
+
+  .card-deck {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: 125px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 0.8fr));
+    grid-gap: 0.5rem;
+  }
+
+  .card-deck .img {
+    max-width: 0.8fr;
+  }
+  .card {
+    width: 18rem;
+  }
+}

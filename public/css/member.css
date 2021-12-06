@@ -1,0 +1,67 @@
+.main-container {
+  text-align: center;
+}
+
+.img-container {
+  text-align: center;
+  display: grid;
+  grid-template: 100px 100px / 1fr 1fr;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  grid-gap: 5px;
+}
+
+img {
+  height: 100px;
+  width: 150px;
+}
+
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Medium Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  img {
+    height: 100px;
+    width: 150px;
+  }
+
+  .img-container {
+    display: flex;
+  }
+}
+
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Large Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+
+@media only screen and (min-width: 992px) {
+  img {
+    height: 200px;
+    width: 250px;
+  }
+
+  .img-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+  }
+}

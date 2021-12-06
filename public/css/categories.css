@@ -1,0 +1,59 @@
+div {
+  padding-bottom: 5px;
+  font-size: 20px;
+}
+
+.categories-section {
+  text-align: center;
+}
+
+#selCategories {
+  padding: 5px;
+}
+
+h2 {
+  margin-left: 40px;
+}
+
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Medium Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .categories-section {
+    text-align: left;
+  }
+
+  h2 {
+    margin-left: 0px;
+  }
+}
+
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Large Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+
+@media only screen and (min-width: 992px) {
+  h2 {
+    margin-left: 0px;
+  }
+
+  .categories-section {
+    text-align: left;
+  }
+}

@@ -1,0 +1,70 @@
+div {
+  padding-bottom: 5px;
+  font-size: 20px;
+}
+
+#btnAddIngredient {
+  padding: 5px;
+}
+
+#ingredients {
+  display: grid;
+  grid-template-columns: auto;
+  background-color: lightgray;
+  padding: 10px;
+}
+
+h2 {
+  margin: 30px;
+}
+
+.ingredients {
+  text-align: center;
+}
+
+.ingredients-container {
+  margin: 0;
+  text-align: left;
+}
+
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Medium Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  #ingredients {
+    grid-template-columns: auto;
+  }
+}
+
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Large Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+
+@media only screen and (min-width: 992px) {
+  .ingredients {
+    text-align: left;
+  }
+
+  h2 {
+    margin: 0;
+  }
+  #ingredients {
+    grid-template-columns: auto auto auto;
+  }
+}

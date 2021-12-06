@@ -1,0 +1,258 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/recipeBuilder.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+        <fieldset>
+            <legend>Recipe Highlight</legend>
+            <input type="hidden" id="recipeId" value=<%=recipe.Id %>>
+            <h2>Recipe Name: <input type="text" id="name" value="<%= recipe.Name %>"></h2>
+
+            <h4>Catgegory: 
+                <select id="category">
+                    <% categories.forEach(cat => { %>
+
+                    <option value="0"><%=cat.Name %></option>
+                    <% cat.subcategories.forEach(scat => { %>
+                    <option value="<%=scat.Id %>">-----<%=scat.Name %></option>
+                    <% }); %>
+                    <% }); %>
+                </select></h4>
+
+            <form id="frmRecipe" action="/member/recipe/builder" method="POST" enctype="multipart/form-data">
+                <label class="btn" for="image">Attach Image</label>
+                <input type="file" id="image" name="image" accept="image/*">
+                <textarea id="recipe" name="recipe"></textarea>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            </form>
+
+            <input type="hidden" id="hvCategoryId" value="<%=recipe.CategoryId %>">
+        </fieldset>
+
+        <hr>
+
+        <fieldset>
+            <legend>Description</legend>
+            <div><textarea id="description"><%= recipe.Description %></textarea></div>
+            <div>Prep Time: <input type="number" id="preptime" value="<%= recipe.PrepTime %>" placeholder="Minutes">
+                Cook
+                Time:
+                <input type="number" id="cooktime" value="<%= recipe.CookTime %>" placeholder="Minutes"> Servings:
+                <input id="servings" value="<%= recipe.Servings %>" type="number">
+            </div>
+        </fieldset>
+
+        <hr>
+
+        <fieldset>
+            <legend>Ingredients</legend>
+            Quantity: <input type="text" size="5" id="quantity">
+            Measurement: <select id="measurement">
+                <option value="0">--select--</option>
+                <% measurements.forEach(m => { %>
+                <option value="<%=m.Id %>"><%=m.Name %></option>
+                <% }); %>
+            </select>
+
+            <br>
+            Ingredient: <input type="text" id="ingredient">
+            <button class="btn" type="button" id="addIngredient">Add to Recipe</button>
+        </fieldset>
+
+        <div id="options"></div>
+
+        <hr>
+
+        <div id="ingredientlist">
+            <% recipe.Ingredients.forEach(ingredient => { %>
+            <div class="iTable" id="t<%=ingredient.IngredientId %>">
+                <span class="quantity"><%=ingredient.Quantity %></span>
+                <span class="measurement"><%=ingredient.Measurement %></span>
+                <span class="ing"><%=ingredient.Ingredient %></span>
+                <button type="button" class="delete-ingredient" data-id="t<%=ingredient.IngredientId %>"> X
+                </button>
+                <div class="recipe-ingredient" data-name="<%=ingredient.Ingredient %>"
+                    data-quantity="<%=ingredient.Quantity %>" data-measurement="<%=ingredient.MeasurementId %>"
+                    data-ingredient="<%=ingredient.IngredientId %>"></div>
+            </div>
+            <% }); %>
+        </div>
+        <input type="hidden" id="ingredient-id" name="ingredient-id" value="0" />
+
+        <br>
+        <h4>Directions</h4>
+        <div><textarea id="directions"><%= recipe.Directions %></textarea></div>
+
+        <br>
+        <div>
+            <button class="btn" type="button" id="addupdate"> Submit </button>
+        </div>
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6"></script>
+    <script>
+        let ingredients = [];
+        let fuse;
+
+        $('#category').val($('#hvCategoryId').val());
+
+        function getAllIngredients() {
+            $.ajax({
+                cache: false,
+                method: "get",
+                url: "/admin/ajax",
+                dataType: "json",
+                data: {
+                    action: "getAllIngredients"
+                },
+                success: function (data) {
+                    ingredients = data;
+                    fuse = new Fuse(data, fuseOptions);
+                }
+            });
+        }
+
+        $('#ingredient').on('keyup mouseup', function () {
+            if ($('#ingredient').val() == '') {
+                $('#options').hide();
+            } else {
+                $('#options').show();
+                const result = fuse.search($(this).val());
+                showIngredients(result);
+            }
+
+        });
+
+        $('body').on('click', '.ingredient', function () {
+            $('#options').hide();
+            $('#ingredient').val($(this).html());
+            $('#ingredient-id').val($(this).data('id'));
+        });
+
+        $('body').on('click', function () {
+            $('#options').hide();
+        });
+
+        function showIngredients(i) {
+            $('#options').html();
+            let html = '';
+            if (i.item == undefined) {
+                i.sort(function (a, b) {
+                    if (a.Name > b.Name) {
+                        return 1;
+                    } else if (b.Name > a.Name) {
+                        return -1;
+                    }
+                    return 0;
+                });
+            }
+            $.each(i, function (k, v) {
+                if (v.item != undefined) v = v.item;
+                html += `<div id="i${v.Id}" class="ingredient" data-id="${v.Id}">${v.Name}</div>`
+            });
+            $('#options').html(html);
+        }
+
+        $('body').on('click', '.delete-ingredient', function () {
+            let id = '#' + $(this).data('id');
+            $(id).remove();
+        });
+
+        $('#addIngredient').click(function () {
+            // Make sure the ingredient is valid
+            $('#ingredient-id').val('0');
+            $.each(ingredients, function (k, v) {
+                if ($('#ingredient').val().toLowerCase() == v.Name.toLowerCase()) {
+                    $('#ingredient-id').val(v.Id);
+                }
+            });
+            let error = false;
+            if ($('#ingredient-id').val() == '0') {
+                toastr.error(`You must select a valid ingredient from the list.`, 'Error');
+                error = true;
+            }
+            if (isNaN($('#quantity').val()) || $('#quantity').val().trim() == '') {
+                toastr.error(`You must enter the quantity as a decimal ie: 1/2 = .5`, 'Error');
+                error = true;
+            }
+            if ($('#measurement').val() == '0') {
+                toastr.error(`You must select a measurement.`, 'Error');
+                error = true;
+            }
+            if (!error) {
+                // Okay to proceed
+                let time = Date.now();
+                let html = `<div class="iTable" id="t${time}">
+                <span class="quantity">${$('#quantity').val()}</span>
+                <span class="measurement">${$('#measurement option:selected').text()}</span>
+                <span class="ing">${$('#ingredient').val()}</span>
+                <button type="button" class="delete-ingredient" data-id="t${time}"> X </button>
+                <div class="recipe-ingredient" data-name="${$('#ingredient').val()}" data-quantity="${$('#quantity').val()}" data-measurement="${$('#measurement').val()}" data-ingredient="${$('#ingredient-id').val()}"></div>
+            </div>`;
+                $('#ingredientlist').append(html);
+                $('#quantity').val('');
+                $('#measurement').val('0');
+                $('#ingredient').val('');
+            }
+        });
+
+        $('#addupdate').click(function () {
+            // Check for mission parts
+            let error = false;
+            if ($('#name').val().trim() == '' || $('#name').val().trim() == 'New Recipe') {
+                toastr.error(`You must enter a valid recipe name.`, 'Error');
+                error = true;
+            }
+            if ($('#category').val() == '0') {
+                toastr.error(`You must select a subcategory.`, 'Error');
+                error = true;
+            }
+            if ($('#ingredientlist').html().trim() == '') {
+                toastr.error(`You must enter at least one ingredient.`, 'Error');
+                error = true;
+            }
+            if ($('#directions').val().trim() == '') {
+                toastr.error(`You must enter directions.`, 'Error');
+                error = true;
+            }
+            if (!error) {
+                // Build the ingredients
+                let recipe_ingredients = []
+                let ingredientsText = '';
+                $.each($('.recipe-ingredient'), function () {
+                    let i = {
+                        IngredientId: $(this).data('ingredient'),
+                        Quantity: $(this).data('quantity'),
+                        MeasurementId: $(this).data('measurement'),
+                    }
+                    ingredientsText += $(this).data('name') + ' ';
+                    recipe_ingredients.push(i);
+                });
+                // Build the recipe
+                let recipe = {
+                    Id: $('#recipeId').val(),
+                    Name: $('#name').val(),
+                    CategoryId: $('#category').val(),
+                    Ingredients: recipe_ingredients,
+                    Directions: $('#directions').val(),
+                    Description: $('#description').val(),
+                    PrepTime: $('#preptime').val(),
+                    CookTime: $('#cooktime').val(),
+                    Servings: $('#servings').val(),
+                    IngredientsText: ingredientsText
+                }
+                $('#recipe').val(JSON.stringify(recipe));
+                $('#frmRecipe').submit();
+            }
+        });
+
+        const fuseOptions = {
+            includeScore: false,
+            threshold: .3,
+            keys: ['Name']
+        }
+        getAllIngredients();
+    </script>
+    <%- include('../includes/end.ejs') %>

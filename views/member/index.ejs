@@ -1,0 +1,52 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/member.css">
+<style type="text/css">
+    .subcategory {
+        display:none;
+    }
+</style>
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <br>
+        <section class="main-container">
+            <h1>Custom Cookbooks</h1>
+            <hr>
+            <h3>Hey! Welcome back,</h3>
+            <h1><%= user.FirstName %></h1>
+        </section>
+        <br>
+
+        <section class="recipes_contaner">
+            <section class="recipes_section1">
+
+                <% categories.forEach(cat => { %>
+                    <div class="card main_category" data-id="<%=cat.Id %>"><%=cat.Name%>
+                        <div class="subcategory" id="subcat<%=cat.Id%>">
+                            <ul class="subcategories no-bullets">
+                                <% cat.subcategories.forEach(scat => { %>
+                                    <a href="/member/recipes?id=<%=scat.Id %>"><li><%=scat.Name%></li></a>
+                                <% }); %>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <% }); %>
+
+            </section>
+        </section>        
+
+        <hr>
+        <div class="img-container">
+            <img src="../../images/1637110835189-oatmeal_chocolate_chip.jpg" alt="chocolate_chip">
+            <img src="../../images/1637110901161-chicken_sweet_potato.jpg" alt="chicken_sweet_potato">
+            <img src="../../images/1637110978636-cheese_soup.jpg" alt="cheese_soup">
+            <img src="../../images/1637111135625-alfredo_bake.jpg" alt="alfredo_bake">
+        </div>
+        <br>
+    </main>
+
+    <%- include('../includes/end.ejs') %>

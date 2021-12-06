@@ -1,0 +1,43 @@
+<%- include('../includes/head.ejs') %>
+<style type="text/css">
+    .subcategory {
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <h1>Explore Recipes</h1>
+        <section class="recipes_introduction">
+            <p>
+                Welcome to our community! Explore recipes that are created by people just like you, who love to cook
+                and try new things. If you are not already a member, please sign up to receive the benefits of
+                creating your own recipes and saving favorite recipes that will be stored in a cookbook of your own.
+            </p>
+        </section>
+
+        <section class="recipes_contaner">
+            <section class="recipes_section1">
+
+                <% categories.forEach(cat => { %>
+                <div class="card main_category" data-id="<%=cat.Id %>"><%=cat.Name%>
+                    <div class="subcategory" id="subcat<%=cat.Id%>">
+                        <ul class="subcategories no-bullets">
+                            <% cat.subcategories.forEach(scat => { %>
+                            <a href="/recipes?id=<%=scat.Id %>">
+                                <li><%=scat.Name%></li>
+                            </a>
+                            <% }); %>
+                        </ul>
+                    </div>
+                </div>
+
+                <% }); %>
+
+            </section>
+        </section>
+    </main>
+    <%- include('../includes/end.ejs') %>

@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-sm navbar-expand-md navbar-expand-lg justify-content-between align-items-center">
+    <div class="site-logo">
+        <a class="navbar-brand" href="/">
+            <img class="img_logo" alt="cookbook.com logo" src="/images/cookbook_com_loogo.png">
+        </a>
+    </div>
+    <div class="search-bar">
+        <form action="./searchRecipes" method="post" class="form-inline">
+            <input class="form-control" type="search" name="q" placeholder="&#128269;" aria-label="Search">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <input type="submit" style="display: none;">
+        </form>
+    </div>
+    <div class="nav-dropdown">
+        <ul class="mb-0 pb-0">
+            <% if (!isAuthenticated) { %>
+            <li class="btn_auth">
+                <a href="/login">Login</a>
+            </li>
+            <li class="btn_auth">
+                <a href="/signup">Sign Up</a>
+            </li>
+            <% } else { %>
+            <li class="welcome-user">
+                <h3>Welcome, <% if (user.FirstName == undefined) { %>
+                    <%= user %>
+                    <% } else { %>
+                    <%= user.FirstName %>
+                    <% } %>!</h3>
+            </li>
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="icon ion-navicon-round"></i>
+                </a>
+                <div class="dropdown-menu nav-menu">
+                    <a class="dropdown-item" href="/member/profile">My Account</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/member">My Cookbook</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/">Explore Recipes</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/member/recipe/builder">Add New Recipe</a>
+                    <div class="dropdown-divider"></div>
+                    <% if (user.IsAdmin) { %>
+                    <a class="dropdown-item" href="/admin/users">Manage Users</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/admin/ingredients">Ingredients</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/admin/categories">Categories</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/admin/measurements">Measurements</a>
+                    <div class="dropdown-divider"></div>
+                    <% } %>
+                    <a class="dropdown-item" href="/logout">
+                        <form action="/logout" method="post">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">Logout
+                        </form>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    </li>
+
+    <% } %>
+    </ul>
+    </div>
+</nav>

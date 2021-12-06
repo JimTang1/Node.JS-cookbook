@@ -1,0 +1,171 @@
+/* Colors */
+:root {
+  --white: #f0f9ff;
+  --dark: #282d32;
+  --yellow: #f0a202;
+  /*#dac363*/
+  --blue: #466a8d;
+  --silver: #c6c7c4;
+}
+
+.form-control {
+  margin: 1rem 0;
+  /* width: 500px; */
+}
+
+.form-control label,
+.form-control input,
+.form-control textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.25rem;
+}
+
+.form-control input,
+.form-control textarea {
+  border: 1px solid #a1a1a1;
+  font: inherit;
+  border-radius: 2px;
+}
+
+.form-control input:focus,
+.form-control textarea:focus {
+  outline-color: var(--blue);
+}
+
+.form-control input.invalid,
+.form-control textarea.invalid {
+  border-color: red;
+}
+
+form label.top {
+  display: block;
+  padding-top: 15 px;
+  color: var(--dark);
+  font-size: 16px;
+}
+
+.centered {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form-control {
+  margin: 1rem 0;
+}
+
+.form-control label,
+.form-control input,
+.form-control textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.25rem;
+}
+
+.form-control input,
+.form-control textarea {
+  border: 1px solid #a1a1a1;
+  font: inherit;
+  border-radius: 2px;
+}
+
+.form-control input:focus,
+.form-control textarea:focus {
+  outline-color: #00695c;
+}
+
+.form-control input.invalid,
+.form-control textarea.invalid {
+  border-color: red;
+}
+
+.contact-form {
+  width: 90%;
+  max-width: 600px;
+  padding: 30px 0px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 20px #000000b3;
+  font-family: cursive;
+  margin: 30px auto;
+  display: grid;
+}
+
+.contact-form h2 {
+  font-size: 28px;
+  margin-top: 0;
+  font-weight: 600;
+  font-family: "Source Serif Pro", serif;
+}
+
+.txtb {
+  border: 1px solid gray;
+  margin: 8px 0;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-family: "Source Serif Pro", serif;
+}
+
+.txtb label {
+  display: block;
+  text-align: left;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.txtb input,
+.txtb textarea {
+  width: 100%;
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 18px;
+  margin-top: 6px;
+  background-color: beige;
+}
+
+input {
+  font-size: 20px;
+  padding: 10px;
+  font-family: "Source Serif Pro", serif;
+}
+
+.contact-form {
+  padding: 30px 0px;
+}
+
+legend {
+  font-size: 20px;
+  font-weight: 600;
+  padding-top: 20px;
+}
+
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Medium Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+@media only screen and (min-width: 768px) and (max-width: 991px) {}
+
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Large Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+
+@media only screen and (min-width: 992px) {}

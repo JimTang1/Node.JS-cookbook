@@ -1,0 +1,133 @@
+div.recipes-page-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+}
+
+div.recipe-page-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Recipes list and pageination */
+div.recipes-btns-wrapper {
+  width: 25.5%;
+}
+
+div.recipes-pageination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.pageination-btn {
+}
+
+/* Recipe data */
+div.recipe-data-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 72%;
+}
+
+div.recipe-data-section {
+  width: 50%;
+}
+
+div.recipe-image {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  width: 80%;
+  max-height: 100em;
+  /* border-style: groove; */
+  margin: auto;
+}
+
+div.recipe-image img {
+  max-height: inherit;
+}
+
+div.recipe-description {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+div.recipe-items-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 20px;
+}
+
+div.recipe-ingredient {
+  margin-bottom: 2px;
+}
+
+h6.base-recipe-info {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Recipe controls */
+div.recipe-controls {
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.step-container h4 {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.img-fluid {
+  width: auto;
+  height: 400px;
+}
+
+.ctrl-btn:hover {
+  color: black;
+}
+
+div.recipe-controls .ctrl-btn {
+  font-size: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Medium Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+}
+
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Large Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+
+@media only screen and (min-width: 992px) {
+}

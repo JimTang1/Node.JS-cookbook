@@ -1,0 +1,27 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/ingredients.css">
+
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <h1>Ingredients</h1>
+        <h2><%= user.FirstName %>, You are in admin mode on the ingredients page.</h2>
+        <div class="ingredients">
+            <div>Ingredient Name: <input type="text" name="ingredient" id="ingredient"></div>
+            <div><button type="button" class="btn" id="btnAddIngredient">Add Ingredient</button></div>
+        </div>
+
+        <br>
+        <hr>
+
+        <div class="ingredients-container">
+            <div id="ingredients"></div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6"></script>
+    <script src="/js/admin-ingredients.js"></script>
+
+    <%- include('../includes/end.ejs') %>

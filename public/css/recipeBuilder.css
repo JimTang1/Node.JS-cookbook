@@ -1,0 +1,210 @@
+main {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.ingredient {
+  cursor: pointer;
+  padding: 2px;
+}
+
+.ingredient:hover {
+  border: solid thin black;
+}
+
+#options {
+  background-color: lightgray;
+  width: 400px;
+  display: none;
+  margin-left: 400px;
+}
+
+#name {
+  width: 500px;
+}
+
+.quantity {
+  display: inline-block;
+  width: 50px;
+}
+
+.measurement {
+  display: inline-block;
+  width: 80px;
+}
+
+.ing {
+  display: inline-block;
+  width: 300px;
+}
+
+.iTable:nth-child(2n + 2) {
+  background-color: lightgray;
+}
+
+#ingredientlist {
+  width: 500px;
+}
+
+#directions {
+  width: 500px;
+  height: 200px;
+}
+
+#description {
+  width: 500px;
+  height: 100px;
+}
+
+#recipe {
+  visibility: hidden;
+}
+
+#addupdate {
+  margin-bottom: 15px;
+}
+
+#preptime {
+  width: 90px;
+}
+
+#cooktime {
+  width: 90px;
+}
+
+#servings {
+  width: 50px;
+}
+
+#quantity {
+  width: 50px;
+}
+
+#measurement {
+  padding: 5px;
+}
+
+#ingredient {
+  width: 200px;
+  margin-top: 15px;
+}
+
+legend {
+  font-weight: 600;
+  padding-top: 20px;
+}
+
+body {
+  text-align: center;
+}
+
+::-webkit-file-upload-button {
+  display: none;
+}
+
+::file-selector-button {
+  display: none;
+}
+
+body {
+  text-align: center;
+}
+h2 {
+  font-size: 20px;
+}
+
+#name {
+  width: 80%;
+}
+h4 {
+  font-size: 20px;
+}
+
+#category {
+  margin-top: 5px;
+  width: 80%;
+  padding: 3px;
+}
+
+#description {
+  width: 80%;
+}
+/* 
+  #preptime {
+    width: 80%;
+  }
+
+  #cooktime {
+    width: 80%;
+  } */
+
+#directions {
+  width: 80%;
+}
+
+#image {
+  margin-top: 10px;
+}
+
+#addIngredient {
+  margin: 10px;
+}
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Medium Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  body {
+    text-align: left;
+  }
+
+  main {
+    margin-top: 15px;
+    margin-left: 30px;
+  }
+}
+
+/* ---------------------------------------------------------------------
+
+   
+
+
+  Large Display
+
+
+  
+
+  ---------------------------------------------------------------------  */
+
+@media only screen and (min-width: 992px) {
+  body {
+    text-align: left;
+  }
+  #name {
+    width: 80%;
+  }
+
+  #category {
+    margin-top: 5px;
+    margin-left: 29px;
+    width: 80%;
+    padding: 3px;
+  }
+
+  #description {
+    width: 92%;
+  }
+
+  #directions {
+    width: 92%;
+  }
+}

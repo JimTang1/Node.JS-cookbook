@@ -1,0 +1,28 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <% if (errorMessage) { %>
+        <div class="user-message user-message--error"><%= errorMessage %></div>
+        <% } %>
+        <form class="login-form mt-4" action="/login" method="POST">
+            <fieldset>
+                <legend>Login</legend>
+                <label class="top" for="email">E-Mail</label>
+                <input class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>" type="email"
+                    name="email" id="email" value="<%= oldInput.email %>">
+                <label class="top" for="password">Password</label>
+                <input class="<%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
+                    type="password" name="password" id="password" value="<%= oldInput.password %>">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <div class="mt-2"><button class="btn" type="submit">Login</button></div>
+            </fieldset>
+        </form>
+
+    </main>
+    <%- include('../includes/end.ejs') %>
